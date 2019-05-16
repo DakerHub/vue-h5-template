@@ -5659,6 +5659,11 @@ node-sass@^4.9.0:
     stdout-stream "^1.4.0"
     "true-case-path" "^1.0.2"
 
+node-waves@^0.7.6:
+  version "0.7.6"
+  resolved "https://registry.npm.taobao.org/node-waves/download/node-waves-0.7.6.tgz#f04890961925e8daab875daa97d154734e7735ff"
+  integrity sha1-8EiQlhkl6Nqrh12ql9FUc053Nf8=
+
 "nopt@2 || 3":
   version "3.0.6"
   resolved "https://registry.npm.taobao.org/nopt/download/nopt-3.0.6.tgz#c6465dbf08abcd4db359317f79ac68a646b28ff9"

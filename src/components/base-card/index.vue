@@ -8,10 +8,15 @@
 <script>
 export default {
   name: 'BaseCard',
+  componentName: 'BaseCard',
   props: {
     title: {
       type: String,
       default: ''
+    },
+    labelWidth: {
+      type: String,
+      default: '60px'
     }
   }
 }
@@ -28,7 +33,7 @@ export default {
     margin-bottom: 15px;
   }
   h1 {
-    font-size: 18px;
+    font-size: 20px;
     color: #2196f3;
     background-color: rgba(33, 150, 243, 0.18);
     padding: 5px;

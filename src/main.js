@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import i18n from './i18n'
 import './filters'
+import './directives'
+import './utils/ios.hack'
 import 'normalize.css'
 
 Vue.config.productionTip = false
