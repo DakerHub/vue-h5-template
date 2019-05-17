@@ -4,7 +4,6 @@ import 'node-waves/dist/waves.css'
 
 export default {
   inserted: function (el, arg) {
-    console.log(arg)
     const config = {
       duration: 500,
       delay: 0

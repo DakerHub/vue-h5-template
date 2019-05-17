@@ -18,13 +18,14 @@
     </BaseCard>
 
     <BaseCard title="用户反馈">
-      <h3>波纹效果</h3>
+      <h3>波纹效果(点击)</h3>
       <div>
         <div v-waves="['rounded-btn', 'waves-circle']">←</div>
         <div v-waves="['dark-btn', 'waves-light']">●</div>
       </div>
       <h3>状态改变(TODO)</h3>
       <div>成功失败图标</div>
+      <UeStatusChange></UeStatusChange>
     </BaseCard>
 
     <BaseCard title="用户体验">
@@ -36,14 +37,16 @@
 </template>
 
 <script>
-import BaseCard from './../components/base-card'
-import BaseCardItem from './../components/base-card/base-card-item'
+import BaseCard from '@/components/base-card'
+import BaseCardItem from '@/components/base-card/base-card-item'
+import UeStatusChange from './examples/ue-status-change'
 
 export default {
   name: 'Features',
   components: {
     BaseCard,
-    BaseCardItem
+    BaseCardItem,
+    UeStatusChange
   },
   data() {
     return {

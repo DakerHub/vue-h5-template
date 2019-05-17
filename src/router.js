@@ -7,6 +7,6 @@ export default new Router({
   routes: [{
     path: '/',
     name: 'Features',
-    component: () => import('./views/Features.vue')
+    component: () => import('./views/features/index.vue')
   }]
 })
