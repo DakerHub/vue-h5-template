@@ -89,7 +89,7 @@ $active-inner-color: #fff;
       height: 100%;
       transform: translateX($size / 2);
       background-color: $active-color;
-      animation: move 0.4s 0.6s forwards;
+      animation: move 0.4s 0.6s 2 forwards;
     }
   }
 }

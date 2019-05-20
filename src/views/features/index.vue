@@ -23,15 +23,18 @@
         <div v-waves="['rounded-btn', 'waves-circle']">←</div>
         <div v-waves="['dark-btn', 'waves-light']">●</div>
       </div>
-      <h3>状态改变(TODO)</h3>
+      <h3>状态改变</h3>
       <div>成功失败图标</div>
       <UeStatusChange></UeStatusChange>
     </BaseCard>
 
     <BaseCard title="用户体验">
-      <h3>骨架屏(TODO)</h3>
+      <h3>骨架屏</h3>
+      <SkeletonScreen></SkeletonScreen>
     </BaseCard>
-    <BaseCard title="权限校验体系（TODO）">带用户系统的页面权限校验存储</BaseCard>
+    <BaseCard title="权限校验体系">
+      <Permission></Permission>
+    </BaseCard>
     <BaseCard title="Axios封装以及接口Mock(TODO)"></BaseCard>
   </div>
 </template>
@@ -40,13 +43,17 @@
 import BaseCard from '@/components/base-card'
 import BaseCardItem from '@/components/base-card/base-card-item'
 import UeStatusChange from './examples/ue-status-change'
+import SkeletonScreen from './examples/skeleton-screen'
+import Permission from './examples/permission/index'
 
 export default {
   name: 'Features',
   components: {
     BaseCard,
     BaseCardItem,
-    UeStatusChange
+    UeStatusChange,
+    SkeletonScreen,
+    Permission
   },
   data() {
     return {
