@@ -8,6 +8,8 @@ import './directives'
 import './utils/ios.hack'
 import 'normalize.css'
 
+import './mock'
+
 Vue.config.productionTip = false
 
 new Vue({

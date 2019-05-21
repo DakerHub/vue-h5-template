@@ -9,8 +9,10 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "dayjs": "^1.8.14",
+    "mockjs": "^1.0.1-beta3",
     "node-waves": "^0.7.6",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.10",

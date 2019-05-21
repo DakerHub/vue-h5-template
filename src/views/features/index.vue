@@ -35,7 +35,9 @@
     <BaseCard title="权限校验体系">
       <Permission></Permission>
     </BaseCard>
-    <BaseCard title="Axios封装以及接口Mock(TODO)"></BaseCard>
+    <BaseCard title="Axios封装以及接口Mock">
+      <AxiosWp></AxiosWp>
+    </BaseCard>
   </div>
 </template>
 
@@ -45,6 +47,7 @@ import BaseCardItem from '@/components/base-card/base-card-item'
 import UeStatusChange from './examples/ue-status-change'
 import SkeletonScreen from './examples/skeleton-screen'
 import Permission from './examples/permission/index'
+import AxiosWp from './examples/axios-wp'
 
 export default {
   name: 'Features',
@@ -53,7 +56,8 @@ export default {
     BaseCardItem,
     UeStatusChange,
     SkeletonScreen,
-    Permission
+    Permission,
+    AxiosWp
   },
   data() {
     return {

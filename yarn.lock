@@ -1462,6 +1462,14 @@ aws4@^1.8.0:
   resolved "https://registry.npm.taobao.org/aws4/download/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
   integrity sha1-8OAD2cqef1nHpQiUXXsu+aBKVC8=
 
+axios@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.npm.taobao.org/axios/download/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+  integrity sha1-MtU+SFHv3AoRmTts0AB4nXDAUQI=
+  dependencies:
+    follow-redirects "^1.3.0"
+    is-buffer "^1.1.5"
+
 babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
   version "6.26.0"
   resolved "https://registry.npm.taobao.org/babel-code-frame/download/babel-code-frame-6.26.0.tgz#63fd43f7dc1e3bb7ce35947db8fe369a3f58c74b"
@@ -2175,15 +2183,15 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
+commander@*, commander@^2.18.0, commander@^2.19.0:
+  version "2.20.0"
+  resolved "https://registry.npm.taobao.org/commander/download/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
+  integrity sha1-1YuytcHuj4ew00ACfp6U4iLFpCI=
+
 commander@2.17.x:
   version "2.17.1"
   resolved "https://registry.npm.taobao.org/commander/download/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha1-vXerfebelCBc6sxy8XFtKfIKd78=
-
-commander@^2.18.0, commander@^2.19.0:
-  version "2.20.0"
-  resolved "https://registry.npm.taobao.org/commander/download/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
-  integrity sha1-1YuytcHuj4ew00ACfp6U4iLFpCI=
 
 commander@~2.19.0:
   version "2.19.0"
@@ -2328,9 +2336,9 @@ copy-webpack-plugin@^4.6.0:
     serialize-javascript "^1.4.0"
 
 core-js@^2.6.5:
-  version "2.6.5"
-  resolved "https://registry.npm.taobao.org/core-js/download/core-js-2.6.5.tgz#44bc8d249e7fb2ff5d00e0341a7ffb94fbf67895"
-  integrity sha1-RLyNJJ5/sv9dAOA0Gn/7lPv2eJU=
+  version "2.6.7"
+  resolved "https://registry.npm.taobao.org/core-js/download/core-js-2.6.7.tgz#c2b19af9b50ec49c356ee087d6155632a889e968"
+  integrity sha1-wrGa+bUOxJw1buCH1hVWMqiJ6Wg=
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -3739,7 +3747,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.3.0:
   version "1.7.0"
   resolved "https://registry.npm.taobao.org/follow-redirects/download/follow-redirects-1.7.0.tgz#489ebc198dc0e7f64167bd23b03c4c19b5784c76"
   integrity sha1-SJ68GY3A5/ZBZ70jsDxMGbV4THY=
@@ -5444,6 +5452,13 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
   dependencies:
     minimist "0.0.8"
+
+mockjs@^1.0.1-beta3:
+  version "1.0.1-beta3"
+  resolved "https://registry.npm.taobao.org/mockjs/download/mockjs-1.0.1-beta3.tgz#d234f3c27256397564f2c955142e891909537209"
+  integrity sha1-0jTzwnJWOXVk8slVFC6JGQlTcgk=
+  dependencies:
+    commander "*"
 
 move-concurrently@^1.0.1:
   version "1.0.1"
