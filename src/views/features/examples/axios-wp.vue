@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <button @click="fetchData">刷新列表</button>
+    <van-button type="primary" @click="fetchData">刷新列表</van-button>
     <h3>目录结构</h3>
     <div>
       <pre>
@@ -48,7 +48,11 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { Button } from 'vant'
 import { fetchPostList } from '@/api/example.js'
+
+Vue.use(Button)
 
 export default {
   name: 'AxiosWp',
@@ -63,7 +67,6 @@ export default {
   methods: {
     async fetchData() {
       const res = await fetchPostList()
-      console.log(res)
       this.list = res.list
     }
   }

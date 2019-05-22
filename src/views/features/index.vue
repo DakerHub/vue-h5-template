@@ -17,6 +17,11 @@
       <BaseCardItem label="过滤值">{{'430000'|currency}}</BaseCardItem>
     </BaseCard>
 
+    <BaseCard title="UI组件">
+      <h3>vant-ui</h3>
+      <VantUi></VantUi>
+    </BaseCard>
+
     <BaseCard title="用户反馈">
       <h3>波纹效果(点击)</h3>
       <div>
@@ -48,6 +53,7 @@ import UeStatusChange from './examples/ue-status-change'
 import SkeletonScreen from './examples/skeleton-screen'
 import Permission from './examples/permission/index'
 import AxiosWp from './examples/axios-wp'
+import VantUi from './examples/vant-ui'
 
 export default {
   name: 'Features',
@@ -57,7 +63,8 @@ export default {
     UeStatusChange,
     SkeletonScreen,
     Permission,
-    AxiosWp
+    AxiosWp,
+    VantUi
   },
   data() {
     return {

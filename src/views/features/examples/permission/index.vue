@@ -1,33 +1,18 @@
 <template>
   <div class="permission">
-    <img src="./flowchart.jpg" alt>
+    <img src="./flowchart.jpg" @click="showImg=!showImg">
+    <van-image-preview v-model="showImg" :images="[flowImg]"></van-image-preview>
     <div>
       <h3>Have a try!</h3>
-      <div>
-        <label for="permissionLogin">用户信息</label>
-        <select id="permissionLogin" v-model="hasUser">
-          <option value="1">有</option>
-          <option value="0">无</option>
-        </select>
-      </div>
-      <div>
-        <label for="permissionAuth">是否有权限</label>
-        <select id="permissionAuth" v-model="hasPermission">
-          <option value="1">是</option>
-          <option value="0">否</option>
-        </select>
-      </div>
-      <div>
-        <label for="permissionLoad">用户自动加载成功</label>
-        <select id="permissionLoad" v-model="userLoadedSuccessfully">
-          <option value="1">是</option>
-          <option value="0">否</option>
-        </select>
-      </div>
-      <button @click="mock">模拟一下</button>
-      <div>
+      <van-cell-group>
+        <van-switch-cell v-model="hasUser" title="是否有用户信息"></van-switch-cell>
+        <van-switch-cell v-model="hasPermission" title="是否有权限"></van-switch-cell>
+        <van-switch-cell v-model="userLoadedSuccessfully" title="用户加载是否成功"></van-switch-cell>
+      </van-cell-group>
+      <van-button type="primary" @click="mock">模拟一下</van-button>
+      <div class="oprations">
         <transition-group name="slide-up">
-          <p v-for="(item, i) in oprations" :key="i">{{item}}</p>
+          <p v-for="item in oprations" :key="item">{{item}}</p>
         </transition-group>
       </div>
     </div>
@@ -35,16 +20,26 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { SwitchCell, CellGroup, Switch, Button, ImagePreview } from 'vant'
+import flowImg from './flowchart.jpg'
 import Permission from '@/utils/Permission.js'
-import { Promise } from 'q'
+
+Vue.use(SwitchCell)
+  .use(CellGroup)
+  .use(Switch)
+  .use(Button)
+  .use(ImagePreview)
 
 export default {
   name: 'Permisssion',
   data() {
     return {
-      hasUser: '1',
-      hasPermission: '1',
-      userLoadedSuccessfully: '1',
+      showImg: false,
+      flowImg: flowImg,
+      hasUser: true,
+      hasPermission: true,
+      userLoadedSuccessfully: true,
       oprations: []
     }
   },
@@ -56,42 +51,44 @@ export default {
         }, 1000)
       })
 
+    const formatBoolean = val => (val ? '是' : '否')
+
     Permission.configure({
       isFreeRoute: async () => {
         await wait1s()
-        this.oprations.push('是否自由路由？ => false')
+        this.oprations.push('是否自由路由？ 👉 否')
         return false
       },
       isUserLoaded: async () => {
         await wait1s()
-        this.oprations.push(`用户是否加载？ => ${this.hasUser === '1'}`)
-        return this.hasUser === '1'
+        this.oprations.push(`用户是否加载？ 👉 ${formatBoolean(this.hasUser)}`)
+        return this.hasUser
       },
       loadUser: async () => {
         await wait1s()
-        this.oprations.push('加载用户...')
+        this.oprations.push('加载用户🚀')
         await wait1s()
-        if (this.userLoadedSuccessfully === '1') {
-          this.hasUser = '1'
-          this.oprations.push('加载用户成功！')
+        if (this.userLoadedSuccessfully) {
+          this.hasUser = true
+          this.oprations.push('加载用户成功👏')
         } else {
-          this.oprations.push('加载用户失败！')
+          this.oprations.push('加载用户失败🤦‍♂️')
         }
 
-        return this.userLoadedSuccessfully === '1'
+        return this.userLoadedSuccessfully
       },
       hasAuth: async () => {
         await wait1s()
-        this.oprations.push(`是否有权限？ => ${this.hasPermission === '1'}`)
-        return this.hasPermission === '1'
+        this.oprations.push(`是否有权限？ 👉 ${formatBoolean(this.hasPermission)}`)
+        return this.hasPermission
       },
       onNoAuth: async () => {
         await wait1s()
-        this.oprations.push('跳转403!')
+        this.oprations.push('禁止访问，跳转403!✋')
       },
       onNoUser: async () => {
         await wait1s()
-        this.oprations.push('跳转去登录吧!')
+        this.oprations.push('跳转去登录吧!🤝 ')
       }
     })
   },
@@ -99,7 +96,7 @@ export default {
     mock() {
       this.oprations = []
       Permission.interceptor(null, null, url => {
-        this.oprations.push(url ? `跳转${url}` : '通过')
+        this.oprations.push(url ? `跳转${url}` : '通过👌')
       })
     }
   }
@@ -110,6 +107,14 @@ export default {
 .permission {
   img {
     width: 100%;
+  }
+  .van-button {
+    margin: 10px 0;
+  }
+  .oprations {
+    font-size: 14px;
+    background-color: #eee;
+    padding: 10px;
   }
 }
 .slide-up-enter-active,

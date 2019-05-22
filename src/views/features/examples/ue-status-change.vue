@@ -4,13 +4,17 @@
       <EffectSuccess v-show="show"></EffectSuccess>
     </div>
     <div class="btn">
-      <button @click="show=!show">切换</button>
+      <van-switch v-model="show"/>
     </div>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import { Switch } from 'vant'
 import EffectSuccess from '@/components/effect-success'
+
+Vue.use(Switch)
 
 export default {
   name: 'UeStatusChange',

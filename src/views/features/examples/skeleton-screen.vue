@@ -22,12 +22,16 @@
         </div>
       </template>
     </SkeletonLoading>
-    <button @click="loading=!loading">切换</button>
+    <van-switch :active-value="false" :inactive-value="true" v-model="loading"/>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import { Switch } from 'vant'
 import SkeletonLoading from '@/components/skeleton-loading'
+
+Vue.use(Switch)
 
 export default {
   name: 'SkeletonScreen',
