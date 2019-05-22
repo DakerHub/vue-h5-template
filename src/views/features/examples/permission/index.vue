@@ -26,7 +26,9 @@
       </div>
       <button @click="mock">模拟一下</button>
       <div>
-        <p v-for="(item, i) in oprations" :key="i">{{item}}</p>
+        <transition-group name="slide-up">
+          <p v-for="(item, i) in oprations" :key="i">{{item}}</p>
+        </transition-group>
       </div>
     </div>
   </div>
@@ -34,6 +36,7 @@
 
 <script>
 import Permission from '@/utils/Permission.js'
+import { Promise } from 'q'
 
 export default {
   name: 'Permisssion',
@@ -46,17 +49,28 @@ export default {
     }
   },
   created() {
+    const wait1s = () =>
+      new Promise(resolve => {
+        setTimeout(() => {
+          resolve()
+        }, 1000)
+      })
+
     Permission.configure({
-      isFreeRoute: () => {
+      isFreeRoute: async () => {
+        await wait1s()
         this.oprations.push('是否自由路由？ => false')
         return false
       },
-      isUserLoaded: () => {
+      isUserLoaded: async () => {
+        await wait1s()
         this.oprations.push(`用户是否加载？ => ${this.hasUser === '1'}`)
         return this.hasUser === '1'
       },
-      loadUser: () => {
+      loadUser: async () => {
+        await wait1s()
         this.oprations.push('加载用户...')
+        await wait1s()
         if (this.userLoadedSuccessfully === '1') {
           this.hasUser = '1'
           this.oprations.push('加载用户成功！')
@@ -66,12 +80,19 @@ export default {
 
         return this.userLoadedSuccessfully === '1'
       },
-      hasAuth: () => {
+      hasAuth: async () => {
+        await wait1s()
         this.oprations.push(`是否有权限？ => ${this.hasPermission === '1'}`)
         return this.hasPermission === '1'
       },
-      noAuthRedirect: '401!',
-      noUserRedirect: '去登录吧'
+      onNoAuth: async () => {
+        await wait1s()
+        this.oprations.push('跳转403!')
+      },
+      onNoUser: async () => {
+        await wait1s()
+        this.oprations.push('跳转去登录吧!')
+      }
     })
   },
   methods: {
@@ -90,5 +111,14 @@ export default {
   img {
     width: 100%;
   }
+}
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.3s;
+}
+.slide-up-enter,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
 }
 </style>

@@ -1,40 +1,47 @@
 export default class Permission {
   static config = {}
   static configure(config) {
-    assert(config.isFreeRoute, 'function')
-    assert(config.isUserLoaded, 'function')
-    assert(config.loadUser, 'function')
-    assert(config.hasAuth, 'function')
-    assert(config.noAuthRedirect, 'string')
-    assert(config.noUserRedirect, 'string')
+    assert(config, 'isFreeRoute', 'function')
+    assert(config, 'isUserLoaded', 'function')
+    assert(config, 'loadUser', 'function')
+    assert(config, 'hasAuth', 'function')
+    assert(config, 'onNoAuth', 'function')
+    assert(config, 'onNoUser', 'function')
     Object.assign(this.config, config)
   }
 
   static async interceptor(to, from, next) {
-    if (this.config.isFreeRoute(to, from)) {
+    if (await this.config.isFreeRoute(to, from)) {
       return next()
     }
 
-    let loadSuccessfully = true
-    if (!this.config.isUserLoaded()) {
-      loadSuccessfully = await this.config.loadUser()
+    let loadUserOK = true
+    if (!await this.config.isUserLoaded()) {
+      loadUserOK = await this.config.loadUser()
     }
 
-    if (loadSuccessfully) {
-      if (this.config.hasAuth(to, from)) {
+    if (loadUserOK) {
+      if (await this.config.hasAuth(to, from)) {
         return next()
       }
 
-      return next(this.config.noAuthRedirect)
+      await this.config.onNoAuth(to, from, next)
+
+      return
     }
 
-    next(this.config.noUserRedirect)
+    return this.config.onNoUser(to, from, next)
   }
 }
 
-function assert(target, type) {
+function assert(config, key, type) {
+  const value = config[key]
   /* eslint-disable valid-typeof */
-  if (typeof target !== type) {
-    throw new TypeError('[Permission.configure] 参数错误')
+  if (!value) {
+    throw new Error(`[Permission.configure] 缺少参数 ${key}`)
+  }
+
+  if (typeof value !== type) {
+    throw new TypeError(`[Permission.configure] ${key} 类型应该是 ${type}`)
   }
 }

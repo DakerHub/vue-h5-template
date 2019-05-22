@@ -3,18 +3,23 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import i18n from './i18n'
+import config from './config'
 import './filters'
 import './directives'
 import './utils/ios.hack'
 import 'normalize.css'
 
-import './mock'
+(async () => {
+  if (config.mockAPI) {
+    await import('./mock')
+  }
 
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  i18n,
-  render: h => h(App)
-}).$mount('#app')
+  new Vue({
+    router,
+    store,
+    i18n,
+    render: h => h(App)
+  }).$mount('#app')
+})()
