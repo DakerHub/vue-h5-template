@@ -1,10 +1,10 @@
 <template>
   <div class="features">
     <BaseCard title="I18n">
-      <select v-model="$i18n.locale">
-        <option value="zh">简体中文</option>
-        <option value="en">English</option>
-      </select>
+      <van-radio-group v-model="$i18n.locale">
+        <van-radio name="zh" style="margin-bottom:10px">简体中文</van-radio>
+        <van-radio name="en">English</van-radio>
+      </van-radio-group>
       <p>{{ $t('hello') }}</p>
     </BaseCard>
 
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { RadioGroup, Radio } from 'vant'
 import BaseCard from '@/components/base-card'
 import BaseCardItem from '@/components/base-card/base-card-item'
 import UeStatusChange from './examples/ue-status-change'
@@ -54,6 +56,9 @@ import SkeletonScreen from './examples/skeleton-screen'
 import Permission from './examples/permission/index'
 import AxiosWp from './examples/axios-wp'
 import VantUi from './examples/vant-ui'
+
+Vue.use(RadioGroup)
+Vue.use(Radio)
 
 export default {
   name: 'Features',
