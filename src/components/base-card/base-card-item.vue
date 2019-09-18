@@ -24,7 +24,6 @@ export default {
         if (!parent.$parent) break
         parent = parent.$parent
         parentName = parent.$options.componentName
-        console.log(parentName)
       }
       return parent
     },

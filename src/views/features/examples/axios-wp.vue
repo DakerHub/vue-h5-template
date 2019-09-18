@@ -83,13 +83,6 @@ export default {
       font-size: 18px;
     }
   }
-  pre {
-    background-color: #eee;
-  }
-  pre,
-  code {
-    font-family: 'Microsoft Yahei';
-  }
   li {
     font-size: 14px;
     margin-bottom: 5px;

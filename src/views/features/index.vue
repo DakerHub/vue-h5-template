@@ -37,9 +37,16 @@
       <h3>骨架屏</h3>
       <SkeletonScreen></SkeletonScreen>
     </BaseCard>
+
+    <BaseCard title="开发体验">
+      <h3>魔法数字说拜拜</h3>
+      <NoMagicNumber></NoMagicNumber>
+    </BaseCard>
+
     <BaseCard title="权限校验体系">
       <Permission></Permission>
     </BaseCard>
+
     <BaseCard title="Axios封装以及接口Mock">
       <AxiosWp></AxiosWp>
     </BaseCard>
@@ -56,6 +63,7 @@ import SkeletonScreen from './examples/skeleton-screen'
 import Permission from './examples/permission/index'
 import AxiosWp from './examples/axios-wp'
 import VantUi from './examples/vant-ui'
+import NoMagicNumber from './examples/no-magic-number'
 
 Vue.use(RadioGroup)
 Vue.use(Radio)
@@ -69,7 +77,8 @@ export default {
     SkeletonScreen,
     Permission,
     AxiosWp,
-    VantUi
+    VantUi,
+    NoMagicNumber
   },
   data() {
     return {
@@ -85,8 +94,29 @@ export default {
   width: 100%;
   box-sizing: border-box;
   background-color: #334a55;
-  /deep/ .base-card {
-    box-shadow: 3px 4px 12px 1px rgba(56, 132, 192, 0.53);
+  line-height: 1.5em;
+  /deep/ {
+    .base-card {
+      box-shadow: 3px 4px 12px 1px rgba(56, 132, 192, 0.53);
+    }
+    .code {
+      background-color: #eee;
+      padding: 2px 4px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    pre {
+      padding: 16px;
+      overflow: auto;
+      font-size: 85%;
+      line-height: 1.45;
+      background-color: #f6f8fa;
+      border-radius: 3px;
+    }
+    pre,
+    code {
+      font-family: 'Microsoft Yahei';
+    }
   }
 }
 
