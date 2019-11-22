@@ -14,7 +14,7 @@
     "mockjs": "^1.0.1-beta3",
     "node-waves": "^0.7.6",
     "normalize.css": "^8.0.1",
-    "vant": "^1.6.19",
+    "vant": "^2.2.14",
     "vue": "^2.6.10",
     "vue-i18n": "^8.0.0",
     "vue-router": "^3.0.3",
